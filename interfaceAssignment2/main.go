@@ -19,4 +19,6 @@ func main() {
 		os.Exit(2)
 	}
 
+	io.Copy(os.Stdout, oFile)
+
 }
