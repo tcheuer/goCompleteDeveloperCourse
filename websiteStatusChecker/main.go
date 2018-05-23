@@ -27,7 +27,19 @@ func main() {
 		go printSiteStatus(link, c)
 	}
 
-	fmt.Println(<-c)
+	/*
+		//Recieving anything from a channel is BLOCKING.
+		//The program will wait here for another go-routine
+		//to finish. After it finishes, the main routine ends,
+		//eliminating any other running go routines.
+		fmt.Println(<-c)
+	*/
+
+	for i := 0; i < len(links); i++ {
+		// <-c is a blocking call,
+		//so it will pause execution until it recieves a message
+		fmt.Println(<-c)
+	}
 
 }
 
